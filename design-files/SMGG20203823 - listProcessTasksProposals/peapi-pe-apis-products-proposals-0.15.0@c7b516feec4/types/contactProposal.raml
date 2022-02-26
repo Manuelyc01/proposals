@@ -1,0 +1,16 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  mobile: mobileProposal.raml
+  email: emailProposal.raml
+  
+types:
+  contactProposal:
+    (annotations.supportedIn):
+      - country: PE
+    (annotations.bindingDefinition):
+      - method: "GET"
+        input: "NONE"
+        output: "REQUIRED"
+    type: mobile.mobile | email.email
+    required: false

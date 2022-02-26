@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "excludedCustomerDueToBuroGroupScore",
+      "message": "El cliente ha sido excluído de la base por el grupo Buró en el que se encuentra.",
+      "type": "ERROR"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  documentType:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        enum: ["DNI","PASSPORT","RUC","DIPLOMATIC","FOREIGNERS","POLICE","MILITARY"]
+        (annotations.enumDescription):
+          - DNI : Identifier national identity document.
+          - PASSPORT : Identifier document passport.
+          - RUC : Identifier document single tax registration.
+          - DIPLOMATIC: Identifier document issued to members of diplomatic missions residing in.
+          - FOREIGNERS: Identifier card for foreign residents.
+          - POLICE: Police Identification Card Identifier.
+          - MILITARY: Identifier document that accredits the military situation.
+        description: |
+          Identifier document type identity.
+        required: false

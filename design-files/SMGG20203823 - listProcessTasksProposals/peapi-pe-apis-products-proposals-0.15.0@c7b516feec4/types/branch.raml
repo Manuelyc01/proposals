@@ -1,0 +1,33 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  branch:
+    (annotations.bindingDefinition):
+      - method: "POST"
+        input: "REQUIRED"
+        output: "NONE"
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Identifier of the office of the bank where the external financing proposal was registered.
+        required: false
+      name:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Description of the office of the bank where the external financing proposal was registered.
+        required: false

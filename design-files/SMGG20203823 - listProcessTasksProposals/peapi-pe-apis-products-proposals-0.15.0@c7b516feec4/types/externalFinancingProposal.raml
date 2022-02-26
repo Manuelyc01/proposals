@@ -1,0 +1,159 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+  tariff: tariff.raml
+  delivery: delivery.raml
+  externalProduct: externalProduct.raml
+  holder: holder.raml
+  operation: operation.raml
+  thirdPartyProvider: thirdPartyProvider.raml
+  branch: branch.raml
+  status: status.raml
+
+types:
+  externalFinancingProposal:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Identifier of the external financing proposal.
+        required: false
+      currency:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: string
+        description: |
+          String based on ISO-4217 for specifying the currency related to the external financing proposal.
+        required: false
+      paymentDay:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: integer
+        description: |
+          Day of the calendar that the payment of the quota must be made.
+        required: false
+      billingDay:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: integer
+        description: |
+          Day of the calendar on which the billing is closed.
+        required: false
+      initialAmount:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        required: false
+        description: |
+          Initial amount financed.
+        type: object
+        properties:
+          amount:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "REQUIRED"
+                output: "NONE"
+            type: number
+            description: |
+              Initial monetary amount financed.
+            required: false
+          currency:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "REQUIRED"
+                output: "NONE"
+            type: string
+            description: |
+              String based on ISO-4217 for specifying the currency related to the initial amount financed.
+            required: false
+      tariff:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: tariff.tariff
+        description: |
+          Applied tariff to the external financing proposal.
+        required: false
+      delivery:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+          - method: "PATCH"
+            input: "OPTIONAL"
+            output: "NONE"
+        type: delivery.delivery
+        description: |
+          Documentation delivery type related to the external financing proposal.
+        required: false
+      externalProduct:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "NONE"
+        type: externalProduct.externalProduct
+        description: |
+          Financed external product.
+        required: false
+      holder:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: holder.holder
+        description: |
+          Holder related with the external financing proposal.
+        required: false
+      operation:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: operation.operation
+        description: |
+          Operation related to the external financing proposal.
+        required: false
+      thirdPartyProvider:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: thirdPartyProvider.thirdPartyProvider
+        description: |
+          Third party provider that provides a external product.
+        required: false
+      branch:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "NONE"
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: branch.branch
+        description: |
+          Office of the bank associated to the external financing proposal.
+        required: false
+      status:
+        (annotations.bindingDefinition):
+          - method: "PATCH"
+            input: "REQUIRED"
+            output: "NONE"
+        type: status.status
+        description: |
+          Status of the external financing proposal.
+        required: false

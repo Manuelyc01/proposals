@@ -1,0 +1,80 @@
+{
+  "data": [
+    {
+      "id": "001101309600000001",
+      "requestDate": "2017-02-17",
+      "disbursementDate": "2017-02-17",
+      "currency": "PEN",
+      "initialFee": {
+        "amount": 2000.5,
+        "currency": "PEN"
+      },
+      "initialAmount": {
+        "amount": 400,
+        "currency": "PEN"
+      },
+      "tariff": {
+        "id": "BBVA001"
+      },
+      "relatedProduct": {
+        "percentage": 0.12,
+        "relatedProductType": {
+          "id": "0250",
+          "name": "Desgravamen individual"
+        }
+      },
+      "externalProduct": {
+        "id": "919223459",
+        "commercialValue": {
+          "amount": 3500.55,
+          "currency": "PEN"
+        },
+        "category": {
+          "categoryType": {
+            "id": "CE",
+            "description": "Cell phones"
+          }
+        }
+      },
+      "holder": {
+        "name": "Euler",
+        "lastName": "Alvarado",
+        "motherLastName": "Pachas"
+      },
+      "operation": {
+        "id": "1123256778",
+        "operationType": {
+          "id": "ALTA",
+          "name": "Alta contrato"
+        }
+      },
+      "delivery": {
+        "deliveryType": {
+          "id": "DIGITAL",
+          "description": "Digital"
+        },
+        "email": "euler.alvarado@bbva.com"
+      },
+      "branch": {
+          "id": "0101",
+          "name": "BBVA Continental"
+      },
+      "status": {
+        "id": "PENDING_SIGNATURE",
+        "name": "Pendiente de firma"
+      }
+    }
+  ],
+  "pagination": {
+    "links": {
+      "first": "https://www.bbvaapis.com/proposals/v0/external-financing-proposals?thirdPartyProvider.id=TDPE&holder.identityDocuments.documentType.id=DNI&holder.identityDocuments.documentNumber=45789542&fromRequestDate=2017-02-17&toRequestDate=2017-02-18&paginationKey=gdfw254sf",
+      "last": "https://www.bbvaapis.com/proposals/v0/external-financing-proposals?thirdPartyProvider.id=TDPE&holder.identityDocuments.documentType.id=DNI&holder.identityDocuments.documentNumber=45789542&fromRequestDate=2017-02-17&toRequestDate=2017-02-18&paginationKey=gdfw254sf",
+      "previous": "https://www.bbvaapis.com/proposals/v0/external-financing-proposals?thirdPartyProvider.id=TDPE&holder.identityDocuments.documentType.id=DNI&holder.identityDocuments.documentNumber=45789542&fromRequestDate=2017-02-17&toRequestDate=2017-02-18&paginationKey=dwer342sf",
+      "next": "https://www.bbvaapis.com/proposals/v0/external-financing-proposals?thirdPartyProvider.id=TDPE&holder.identityDocuments.documentType.id=DNI&holder.identityDocuments.documentNumber=45789542&fromRequestDate=2017-02-17&toRequestDate=2017-02-18&paginationKey=qazx687sf"
+    },
+    "page": 1,
+    "totalPages": 6,
+    "totalElements": 6,
+    "pageSize": 1
+  }
+}

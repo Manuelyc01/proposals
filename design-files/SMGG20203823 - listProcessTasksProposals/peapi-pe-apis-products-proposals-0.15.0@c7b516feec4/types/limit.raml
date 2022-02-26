@@ -1,0 +1,60 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  limit:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        enum: [ADJUSTED, CONTRACT, REAL]
+        (annotations.enumDescription):
+          - ADJUSTED: Adjusted limit.
+          - CONTRACT: Contract limit.
+          - REAL: Real limit.
+        description: |
+          Limit identifier.
+        required: false
+      name:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Limit localized description.
+        required: false
+      amounts:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: array
+        description: |
+          Monetary restriction related to the current limit. The amounts may be provided in several currencies (depending on the country).
+        required: false
+        items:
+          properties:
+            value:
+              (annotations.bindingDefinition):
+                - method: "GET"
+                  input: "NONE"
+                  output: "REQUIRED"
+              type: number
+              description: |
+                Monetary amount related to the limit.
+              required: false
+            currency:
+              (annotations.bindingDefinition):
+                - method: "GET"
+                  input: "NONE"
+                  output: "REQUIRED"
+              type: string
+              description: |
+                String based on ISO-4217 for specifying the currency related to the amount limit.
+              required: false

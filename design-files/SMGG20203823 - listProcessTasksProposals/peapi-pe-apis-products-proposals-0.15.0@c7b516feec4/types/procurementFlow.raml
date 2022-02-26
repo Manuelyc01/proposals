@@ -1,0 +1,49 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  procurementFlow:
+    type: object
+    properties:
+      procurementFlowType:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: object
+        properties:
+          id:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "NONE"
+                output: "REQUIRED"
+              - method: "GET"
+                input: "NONE"
+                output: "REQUIRED"
+            enum: ["FAST","NO_FAST"]
+            (annotations.enumDescription):
+            - FAST: The analysis of the person is fast and with less validations in order to give the offered product as soon is possible.
+            - NO_FAST: The analysis of the person is more detailed and with many validations.
+            type: string
+            description: |
+              Procurement flow type identifier.
+            required: false
+          name:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "NONE"
+                output: "REQUIRED"
+              - method: "GET"
+                input: "NONE"
+                output: "REQUIRED"
+            type: string
+            description: |
+              Procurement flow type description.
+            required: false
+        description: |
+          Procurement flow type.
+        required: false

@@ -1,0 +1,37 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  status:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "PATCH"
+            input: "REQUIRED"
+            output: "NONE"
+        type: string
+        enum: [PENDING_COMPLETION_DATA, PENDING_SIGNATURE, SIGNED, DISBURSED, CANCELED, ANNULLED]
+        (annotations.enumDescription):
+          - PENDING_COMPLETION_DATA: Pending completion data of a person to be registered as a customer.
+          - PENDING_SIGNATURE: Pending sign the documentation by the customer.
+          - SIGNED: When the documentation has been signed.
+          - DISBURSED: When the external product is delivered to the customer.
+          - CANCELED: When you can not finance the external product to the customer for failing to meet certain requirements.
+          - ANNULLED: When the client does not pay the initial fee.
+        description: |
+          Identifier of the status of the proposal.
+        required: false
+      name:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Description of the status of the external financing proposal.
+        required: false

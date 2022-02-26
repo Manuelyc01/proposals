@@ -1,0 +1,84 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  identityDocumentHiring: identityDocumentHiring.raml
+
+types:
+  assignHiringBranches:
+    type: object
+    properties:
+      participant:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "NONE"
+        type: object
+        properties:
+          customerId:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "OPTIONAL"
+                output: "NONE"
+            type: string
+            description: |
+              Unique customer identifier. It will be required if not is an informed identityDocument.
+            required: false
+          identityDocument:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "OPTIONAL"
+                output: "NONE"
+            type: identityDocumentHiring.identityDocumentHiring
+            description: |
+              Identity document information related to the person. It will be required if not is an informed customerId.
+            required: false
+        required: false
+        description: |
+          Data of the participant of the contracting process. It will be required if not is an informed businessProcessId.
+      businessProcessId:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "NONE"
+        type: string
+        required: false
+        description: |
+          Business process identifier that serves as a link between business data and the process which belongs to. Is informed at process creation time and is the same for all the tasks inside the process. It will be required if not is an informed participant.
+      managementBranch:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+        required: false
+        type: object
+        description: |
+          Managing office of the contract. To identify the operating office where the contract is managed.
+        properties:
+          id:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "NONE"
+                output: "REQUIRED"
+            type: string
+            description: |
+              Identifier of attention branch.
+            required: false
+      contractingBranch:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+        required: false
+        type: object
+        description: |
+          Center with which the card contract will be registered.
+        properties:
+          id:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "NONE"
+                output: "REQUIRED"
+            type: string
+            description: |
+              Identifier of attention branch.
+            required: false            

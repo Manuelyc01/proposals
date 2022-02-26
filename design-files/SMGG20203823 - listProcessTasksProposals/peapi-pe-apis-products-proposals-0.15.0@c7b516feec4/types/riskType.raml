@@ -1,0 +1,32 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  riskType:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        enum: [RISK1, RISK2, RISK3, NO_RISK]
+        (annotations.enumDescription):
+          - RISK1: Risk type 1.
+          - RISK2: Risk type 2.
+          - RISK3: Risk type 3.
+          - NO_RISK: Having no risk involved.
+        description: |
+          Risk type identifier.
+        required: false
+      name:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Risk type description.
+        required: false

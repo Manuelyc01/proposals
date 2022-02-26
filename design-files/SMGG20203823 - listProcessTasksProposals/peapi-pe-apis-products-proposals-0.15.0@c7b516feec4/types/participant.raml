@@ -1,0 +1,46 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  identityDocument: identityDocument.raml
+  riskLevel: riskLevel.raml
+
+types:
+  participant:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Identifier for the participant. DISCLAIMER: This field is required only if identityDocument is not used.
+        required: false
+      identityDocument:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: identityDocument.identityDocument
+        description: |
+          Identity document number of the participant.
+        required: false
+      segmentationCode:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Segment where the person belongs for Risks area.
+        required: false
+      riskLevel:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: riskLevel.riskLevel
+        description: |
+          Risk Level for the person. It is used as input to assign an interest rate for the product of the proposal. For example, if the person has a low risk level, he or she is able to get a better interest rate than other person that has a high risk level.
+        required: false

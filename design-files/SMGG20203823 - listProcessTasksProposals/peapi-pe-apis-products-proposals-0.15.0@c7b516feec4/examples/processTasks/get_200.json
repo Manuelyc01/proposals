@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "taskId": "23443",
+      "businessProcessId": "CAR-432435343",
+      "status": {
+        "id": "ACTIVE",
+        "description": "Indicates that the task is active"
+      }
+    },
+    {
+      "taskId": "23488",
+      "businessProcessId": "INT-43090909",
+      "status": {
+        "id": "ACTIVE",
+        "description": "Indicates that the task is active"
+      }
+    }
+  ]
+}

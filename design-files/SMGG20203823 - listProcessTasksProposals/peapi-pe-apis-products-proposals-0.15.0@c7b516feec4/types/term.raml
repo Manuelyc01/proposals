@@ -1,0 +1,35 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  term:
+    type: object
+    properties:
+      frequency:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        enum: [MONTHLY]
+        (annotations.enumDescription):
+          - MONTHLY: Months.
+        description: |
+          Frequency of the term.
+        required: false
+      value:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: number
+        description: |
+          Value of the term.
+        required: false

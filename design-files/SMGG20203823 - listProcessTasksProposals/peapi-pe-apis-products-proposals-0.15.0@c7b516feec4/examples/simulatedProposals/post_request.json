@@ -1,0 +1,18 @@
+{
+  "participant": {
+    "id": "A23334"
+  },
+  "products": [
+    {
+      "productClassification": {
+        "id": "RENOVATED_CONSUMER_LOAN"
+      },
+      "productClassification": {
+        "id": "LINE_INCREMENT"
+      },
+      "productClassification": {
+        "id": "CREDIT_CARD"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  identityDocument: identityDocument.raml
+  contact: contact.raml
+
+types:
+  participantProposal:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Identifier of the participant.
+        required: false
+      identityDocument:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: identityDocument.identityDocument
+        description: |
+          Identity document information related to the person.
+        required: false
+      contacts:
+        (annotations.bindingDefinition):
+          - method: POST
+            input: OPTIONAL
+            output: OPTIONAL
+        type: contact.contact[]
+        description: |
+          Contact information value.
+        required: false

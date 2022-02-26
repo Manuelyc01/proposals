@@ -1,0 +1,429 @@
+#%RAML 1.0
+title: Proposals
+version: v0.15.0
+description: !include docs/apiDescription.md
+baseUri: https://www.bbvaapis.com/proposals/v0
+
+uses:
+  proposals: types/proposals.raml
+  simulatedProposal: types/simulatedProposal.raml
+  externalFinancingProposals: types/externalFinancingProposals.raml
+  externalFinancingProposal: types/externalFinancingProposal.raml
+  simulatedProposals: types/simulatedProposals.raml
+  validateAccess: types/validateAccess.raml
+  generateDocuments: types/generateDocuments.raml
+  sign: types/sign.raml
+  contactProposal: types/contactProposal.raml
+  processTasks: types/processTasks.raml
+  assignHiringBranches: types/assignHiringBranches.raml
+  pagination: ../glapi-global-apis-commons-commons/types/pagination.raml
+
+annotationTypes:
+  countrySpecific: !include ../glapi-global-apis-commons-commons/annotations/countrySpecific.raml
+  exampleInput: !include ../glapi-global-apis-commons-commons/annotations/exampleInput.raml
+  enumDescription: !include ../glapi-global-apis-commons-commons/annotations/enumDescription.raml
+
+traits:
+  pageable: !include ../glapi-global-apis-commons-commons/traits/pageable.raml
+
+resourceTypes:
+  collection: !include ../glapi-global-apis-commons-commons/resourceTypes/collection.raml
+  collection-item: !include ../glapi-global-apis-commons-commons/resourceTypes/collection-item.raml
+  consulting-post: !include ../glapi-global-apis-commons-commons/resourceTypes/consulting-post.raml
+
+types:
+  errors: !include ../glapi-global-apis-commons-commons/types/errors.raml
+
+/proposals:
+  description: |
+    Manages the proposals of a person.
+  type: collection
+
+  get:
+    description: |
+      Service for retrieving the list of proposals related to a specific person.
+    is: [pageable]
+
+    queryParameters:
+      customerId:
+        description: "Filters the proposals by unique customer identifier"
+        type: string
+        required: false
+        example: "123456"
+      participant.identityDocument.documentType.id:
+        description: "Filters the proposals by document type"
+        type: string
+        enum: ["DNI","PASSPORT","RUC","DIPLOMATIC","FOREIGNERS","POLICE","MILITARY"]
+        (enumDescription):
+          - DNI : Identifier national identity document.
+          - PASSPORT : Identifier document passport.
+          - RUC : Identifier document single tax registration.
+          - DIPLOMATIC: Identifier document issued to members of diplomatic missions residing in.
+          - FOREIGNERS: Identifier card for foreign residents.
+          - POLICE: Police Identification Card Identifier.
+          - MILITARY: Identifier document that accredits the military situation.
+        required: false
+        example: "DNI"
+      participant.identityDocument.documentNumber:
+        description: "Filters the proposals by document number"
+        type: string
+        required: false
+        example: "12345678"
+    responses:
+      200:
+        body:
+          application/json:
+            examples:
+              simplest:
+                value: !include examples/proposals/get_200.json
+                description: JSON output example to obtain the proposals by document number and type /proposals?participant.identityDocument.documentType.id=DNI&participant.identityDocument.documentNumber=12345678
+                displayName: JSON output example with document number and type filters.
+              filter:
+                value: !include examples/proposals/get_filter_200.json
+                description: JSON output example with filter GET /proposals?customerId=123456
+                displayName: JSON output example with customer identifier filter.
+              pageable:
+                value: !include examples/proposals/get_200_pageable.json
+                description: Pageable view JSON output example
+                displayName: JSON output example for the pageable call GET /proposals
+            type: object
+            properties:
+              data:
+                type: proposals.proposals
+              pagination:
+                type: pagination.pagination
+                required: false
+
+  /{proposal-id}:
+    description: A specific proposal.
+    type: collection-item
+    uriParameters:
+      proposal-id:
+        type: string
+        description: Unique proposal identifier.
+        example: "955692"
+    /sign:
+      description: |
+        Information related to the signing of the documents associated with a proposal.
+      type: consulting-post
+
+      post:
+        description: |
+          Generate asynchronous signature of business process documents associated with a proposal.
+        body:
+          application/json:
+            example: !include examples/proposals/proposal-id/sign/post_request.json
+            type: sign.sign
+        responses:
+          204:
+            description: Not content.
+
+  /simulate:
+    description: |
+      Manages a set of simulated proposals for a person, these set of simulated proposals are generated from the original proposals.
+    type: consulting-post
+
+    post:
+      description: |
+        Service for simulating a set of proposals.
+
+      body:
+        application/json:
+          examples:
+            simplest:
+              value: !include examples/simulatedProposals/post_request.json
+              description: JSON input example for simulating a list of proposals.
+              displayName: Simulate proposals JSON input.
+            withProposal:
+              value: !include examples/simulatedProposals/post_request_with_proposal.json
+              description: JSON input example for simulating a list of proposals including a proposal previously simulated as input.
+              displayName: Simulate proposals JSON input that includes a previously simulated proposal as input.
+          type: simulatedProposal.simulatedProposal
+      responses:
+        200:
+          description: Ok
+          body:
+            application/json:
+              example: !include examples/simulatedProposals/post_200.json
+              type: object
+              properties:
+                data:
+                  type: simulatedProposals.simulatedProposals
+        400:
+          body:
+            application/json:
+              examples:
+                  type: errors.errors
+                  invalidCustomerData:
+                    value: !include examples/simulatedProposals/post_400_invalidCustomerData.json
+                    description: JSON output example for a POST /proposals/simulate for an invalid customer data.
+                    displayName: JSON for an invalid customer data.
+                  excludedCustomerDueToBeingInactive:
+                    value: !include examples/simulatedProposals/post_400_excludedCustomerDueToBeingInactive.json
+                    description: JSON output example for a POST /proposals/simulate for an excluded customer base for being inactive.
+                    displayName: JSON for an excluded customer Base due to being inactive.
+                  excludedCustomerDueToBuroGroupScore:
+                    value: !include  examples/simulatedProposals/post_400_excludedCustomerDueToBuroGroupScore.json
+                    description: JSON output example for a POST /proposals/simulate for an excluded customer from the base by the Group Buró Score in which its found.
+                    displayName: JSON for an excluded customer Base due to being in Buro Group score.
+                  excludedCustomerDueToInternalRiskScore:
+                    value: !include  examples/simulatedProposals/post_400_excludedCustomerDueToInternalRiskScore.json
+                    description: JSON output example for a POST /proposals/simulate for customer base excluded for not complying with the bank's internal risk score that is required.
+                    displayName: JSON for an excluded customer Base due to the internal Risk Score Bank.
+                  excludedCustomerDueToFinancialSystemRiskScore:
+                    value: !include examples/simulatedProposals/post_400_excludedCustomerDueToFinancialSystemRiskScore.json
+                    description: JSON output example for a POST /proposals/simulate for an excluded customer base for not complying with the Financial System's risk score that is required.
+                    displayName: JSON for an excluded Customer Base due to the Financial System Risk Score.
+                  excludedCustomerDueToOverIndebtedness:
+                    value: !include examples/simulatedProposals/post_400_excludedCustomerDueToOverIndebtedness.json
+                    description: JSON output example for a POST /proposals/simulate for an excluded customer Base for the overIndebtedness level.
+                    displayName: JSON for an excluded Customer Base by its overIndebtedness level.
+                  excludedCustomerDueToPublicRelevanceCondition:
+                    value: !include examples/simulatedProposals/post_400_excludedCustomerDueToPublicRelevanceCondition.json
+                    description: JSON output example for a POST /proposals/simulate for an excluded customer base by its public relevance condition.
+                    displayName: JSON for an excluded Customer Base by its public relevance condition.
+                  invalidSubproductRebalancingOffers:
+                    value: !include examples/simulatedProposals/post_400_invalidSubproductRebalancingOffers.json
+                    description: JSON output example for a POST /proposals/simulate for the subproduct code is invalid for the rebalancing offers.
+                    displayName: JSON  for the subproduct code is invalid for the rebalancing offers.
+
+  /contacts:
+    description: |
+      Management of contacts to be consider of the customer o non customer in the contracting process.
+    type: collection
+
+    get:
+      description: |
+        It allows to obtain the contacts to be consider of the customer o non customer in the contracting process.
+      responses:
+        200:
+          description: Ok.
+          body:
+            application/json:
+              example: !include examples/proposals/contacts/get_200.json
+              type: object
+              properties:
+                data:
+                  type: contactProposal.contactProposal
+        400:
+          description: Bad Request.
+          body:
+            application/json:
+              type: errors
+              examples:
+                tokenNotExist:
+                  value: !include examples/proposals/contacts/get_400_tokenNotExist.json
+                  description: JSON output example for call GET /proposals/contacts with errors
+                  displayName: JSON output example for bad request
+                tokenExpired:
+                  value: !include examples/proposals/contacts/get_400_tokenExpired.json
+                  description: JSON output example for call GET /proposals/contacts with errors
+                  displayName: JSON output example for bad request
+
+/external-financing-proposals:
+  description: |
+    Manages the external financing proposals.
+  type: collection
+
+  get:
+    description: |
+      Service for consulting external financing proposals.
+
+    is: [pageable]
+
+    queryParameters:
+      thirdPartyProvider.id:
+        description: |
+          Filters the external financing proposals by third party provider identifier.
+        type: string
+        required: true
+        example: "TELF"
+      externalProduct.category.categoryType.id:
+        description: |
+          Filters the external financing proposals by external product category type identifier.
+        type: string
+        required: true
+        example: "CE"
+      holder.identityDocuments.documentNumber:
+        description: |
+          Filters the external financing proposals by document number.
+        type: string
+        required: true
+        example: "45635269"
+      holder.identityDocuments.documentType.id:
+        description: |
+          Filters the external financing proposals by document type.
+        type: string
+        enum: ["DNI"]
+        (enumDescription):
+          - DNI: Identifier national identity document.
+        required: true
+        example: "DNI"
+      fromRequestDate:
+        description: |
+          Filters for the external financing proposals\'s which request date is later than this one (ISO-8601 date format).
+        type: date-only
+        required: true
+        example: "2016-02-28"
+      toRequestDate:
+        description: |
+          Filters for the external financing proposals\'s which request date is earlier than this one (ISO-8601 date format).
+        type: date-only
+        required: true
+        example: "2016-02-28"
+    responses:
+      200:
+        body:
+          application/json:
+            examples:
+              basic:
+                value: !include examples/externalFinancingProposals/get_200.json
+                description: Basic view JSON output example
+                displayName: JSON output example for the basic call GET /externalFinancingProposals
+              pageable:
+                value: !include examples/externalFinancingProposals/get_200_pageable.json
+                description: Pageable view JSON output example
+                displayName: JSON output example for the pageable call GET /externalFinancingProposals
+            type: object
+            properties:
+              data:
+                type: externalFinancingProposals.externalFinancingProposals
+              pagination:
+                type: pagination.pagination
+                required: false
+  post:
+    description: |
+      Service for creating an external financing proposal.
+
+    body:
+      application/json:
+        example: !include examples/externalFinancingProposals/post_request.json
+        type: externalFinancingProposal.externalFinancingProposal
+    responses:
+      201:
+        headers:
+          Location:
+            displayName: location
+            description: This header must provide the URI to reach the created resource.
+            type: string
+            required: true
+            example: /external-financing-proposals/001101309600000001
+        description: Created
+
+
+  /{external-financing-proposal-id}:
+    description: |
+      Manages an external financing proposal
+    type: collection-item
+
+    uriParameters:
+      external-financing-proposal-id:
+        description: |
+          Identifier of the external financing proposal.
+        type: string
+        required: true
+        example: "001101309600000001"
+
+    patch:
+      description: |
+        Service for updating the attributes of an external financing proposal.
+      body:
+          application/json:
+            example: !include examples/externalFinancingProposals/external-financing-proposal-id/patch_request.json
+            type: externalFinancingProposal.externalFinancingProposal
+      responses:
+        204:
+          description: No Content.
+
+/questionnaires:
+  description: |
+    Resource for managing questionnaires for proposals.
+  type: collection
+  /validate-access:
+    description: |
+      Resources to manage the information related to the validation of access to channels not sessioned for customers and non-customers.
+    type: consulting-post
+    post:
+      description: |
+        Validation of access to channels not sessioned for customers and non-customers.
+      body:
+        application/json:
+          example: !include examples/questionnaires/validate-access/post_request.json
+          type: validateAccess.validateAccess
+      responses:
+        200:
+          description: OK.
+          body:
+            application/json:
+              example: !include examples/questionnaires/validate-access/post_200.json
+              type: object
+              properties:
+                data:
+                  type: validateAccess.validateAccess
+
+/generate-documents:
+  description: |
+    Resources to manage the information related to the proposal documents in a contracting process.
+  type: consulting-post
+  post:
+    description: |
+      Generate documents asynchronously based on the identifier of the contract process associated with the customer.
+    body:
+      application/json:
+        example: !include examples/generate-documents/post_request.json
+        type: generateDocuments.generateDocuments
+    responses:
+      204:
+        description: Not content.
+
+/process-tasks:
+  description: |
+    Manage tasks in business processes.
+  type: collection
+  get:
+    description: |
+      Returns tasks in business processes.
+    queryParameters:
+      businessProcessId:
+        description: |
+          Business process identifier that serves as a link between business data and the process which belongs to. Is informed at process creation time and is the same for all the tasks inside the process.
+        type: string
+        example: "982HE"
+        required: false
+      taskId:
+        description: |
+          The Task Identifier.
+        type: string
+        example: "72514963"
+        required: false
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/processTasks/get_200.json
+            type: object
+            properties:
+              data:
+                type: processTasks.processTasks
+
+/assign-hiring-branches:
+  description: |
+     Manage branches assignations in business contracting processes.
+  type: consulting-post
+  post:
+    description: |
+      Manage the required offices in a hiring process.
+    body:
+      application/json:
+        example: !include examples/assignHiringBranches/post_request.json
+        type: assignHiringBranches.assignHiringBranches
+    responses:
+      200:
+        description: OK.
+        body:
+          application/json:
+            example: !include examples/assignHiringBranches/post_200.json
+            type: object
+            properties:
+              data:
+                type: assignHiringBranches.assignHiringBranches

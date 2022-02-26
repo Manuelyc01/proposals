@@ -1,0 +1,32 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  commercialValue:
+    type: object
+    properties:
+      amount:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: number
+        description: |
+          Total value amount.
+        required: false
+      currency:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: string
+        description: |
+          String based on ISO-4217 for specifying the currency related to the total value amount.
+        required: false

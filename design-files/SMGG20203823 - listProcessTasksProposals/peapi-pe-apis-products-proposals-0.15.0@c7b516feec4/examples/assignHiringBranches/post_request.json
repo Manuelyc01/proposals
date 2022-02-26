@@ -1,0 +1,10 @@
+{
+  "participant": {
+    "identityDocument": {
+      "documentType": {
+        "id": "DNI"
+      },
+      "documentNumber": "98123476"
+    }
+  }
+}

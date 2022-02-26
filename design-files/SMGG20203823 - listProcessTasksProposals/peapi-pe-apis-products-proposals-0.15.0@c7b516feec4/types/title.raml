@@ -1,0 +1,32 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  title:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        required: false
+        description: |
+          Title identifier.
+      name:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        required: false
+        description: |
+          Title description.

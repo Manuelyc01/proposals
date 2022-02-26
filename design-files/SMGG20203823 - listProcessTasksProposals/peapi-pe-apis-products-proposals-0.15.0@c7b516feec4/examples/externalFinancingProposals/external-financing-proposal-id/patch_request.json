@@ -1,0 +1,11 @@
+{
+  "delivery": {
+    "deliveryType": {
+      "id": "DIGITAL"
+    },
+    "email": "euler.alvarado@bbva.com"
+  },
+  "status": {
+    "id": "PENDING_SIGNATURE"
+  }
+}

@@ -1,0 +1,35 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  baseContact: baseContactProposal.raml
+  phoneCompany: phoneCompany.raml
+
+types:
+  mobile:
+    type: baseContact.baseContact
+    discriminatorValue: MOBILE
+    description: Mobile contact type
+    properties:
+      number:
+        (annotations.supportedIn):
+          - country: PE
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Contact mobile number. This value will be masked when basic
+          authentication state. If the authentication state is advanced the
+          value will be clear.          
+      phoneCompany:
+        (annotations.supportedIn):
+          - country: PE
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: phoneCompany.phoneCompany
+        description: |
+          Contact vendor information.
+        required: false

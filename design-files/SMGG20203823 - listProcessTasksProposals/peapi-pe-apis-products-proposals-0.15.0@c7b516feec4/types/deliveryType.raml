@@ -1,0 +1,38 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  deliveryType:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+          - method: "PATCH"
+            input: "OPTIONAL"
+            output: "NONE"
+        type: string
+        enum: ["DIGITAL", "PHYSICAL", "BOTH", "NONE"]
+        (annotations.enumDescription):
+          - DIGITAL: The delivery type of the documentation is digital.
+          - PHYSICAL: The delivery type of the documentation is physical.
+          - BOTH: The delivery type of the documentation is digital and physical.
+          - NONE: The delivery type of the documentation does not apply.
+        description: |
+          Identifier of documentation delivery type.
+        required: false
+      description:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Description of documentation delivery type.
+        required: false

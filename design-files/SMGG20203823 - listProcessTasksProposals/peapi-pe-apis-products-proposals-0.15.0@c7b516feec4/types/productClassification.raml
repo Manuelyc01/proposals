@@ -1,0 +1,29 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  productClassification:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Financial product classification identifier.
+        required: false
+      name:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Financial product classification description.
+        required: false

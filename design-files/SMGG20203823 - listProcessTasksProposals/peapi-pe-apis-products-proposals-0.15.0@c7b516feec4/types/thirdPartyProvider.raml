@@ -1,0 +1,57 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  thirdPartyProvider:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: string
+        description: |
+          Third party provider identifier.
+        required: false
+      name:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Third party provider description.
+        required: false
+      externalSalesChannel:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "NONE"
+        type: object
+        description: |
+          External sales channel of the third party provider that provides an external product.
+        required: false
+        properties:
+          id:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "REQUIRED"
+                output: "NONE"
+              - method: "GET"
+                input: "NONE"
+                output: "REQUIRED"
+            type: string
+            description: |
+              External sales channel identifier.
+            required: false
+          name:
+            (annotations.bindingDefinition):
+              - method: "GET"
+                input: "NONE"
+                output: "OPTIONAL"
+            type: string
+            description: |
+              External sales channel description.
+            required: false

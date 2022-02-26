@@ -1,0 +1,56 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  grantedAmount:
+    type: object
+    properties:
+      grantedAmountType:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+        type: object
+        properties:
+          id:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "NONE"
+                output: "REQUIRED"
+            type: string
+            enum: [ADJUSTED, CONTRACTED, REAL]
+            (annotations.enumDescription):
+              - ADJUSTED: It's the rounded real granted amount.
+              - CONTRACTED: It's the granted amount that is selected by the person.
+              - REAL: It's the original calculated granted amount without modifications.
+            description: |
+              Granted amount type identifier.
+            required: false
+        description: |
+          Granted amount type.
+        required: false
+      value:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: number
+        description: |
+          Granted amount value.
+        required: false
+      currency:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          String based on ISO-4217 for specifying the currency related to the Granted amount by the proposal.
+        required: false

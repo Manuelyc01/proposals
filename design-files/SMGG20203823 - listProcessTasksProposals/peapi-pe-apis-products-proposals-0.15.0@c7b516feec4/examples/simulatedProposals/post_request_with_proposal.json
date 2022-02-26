@@ -1,0 +1,45 @@
+{
+  "participant": {
+    "id": "A23334"
+  },
+  "products": [
+    {
+      "productClassification": {
+        "id": "RENOVATED_CONSUMER_LOAN"
+      }
+    },
+    {
+      "productClassification": {
+        "id": "LINE_INCREMENT"
+      }
+    },
+    {
+      "productClassification": {
+        "id": "CREDIT_CARD"
+      }
+    }
+  ],
+  "proposal": {
+    "term": {
+      "frequency": "MONTHLY",
+      "value": 36
+    },
+    "product": {
+      "productClassification": {
+        "id": "AS37"
+      },
+      "title":{
+        "id":"C1"
+      }
+    },
+    "grantedAmount": {
+      "value": 23543,
+      "currency": "PEN"
+    },
+    "installmentPayment": {
+      "amount": 800,
+      "currency": "PEN"
+    },
+    "interestRate": 15
+  }
+}

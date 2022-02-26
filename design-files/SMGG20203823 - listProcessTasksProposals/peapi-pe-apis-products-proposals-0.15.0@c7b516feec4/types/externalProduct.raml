@@ -1,0 +1,72 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+  commercialValue: commercialValue.raml
+
+types:
+  externalProduct:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: string
+        description: |
+          Identifier of the external product financed.
+        required: false
+      commercialValue:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "NONE"
+        type: commercialValue.commercialValue
+        description: |
+          Commercial value of the external product financed.
+        required: false
+      category:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: object
+        description: |
+          Category to which the financed product belongs.
+        required: false
+        properties:
+          categoryType:
+            (annotations.bindingDefinition):
+              - method: "GET"
+                input: "NONE"
+                output: "REQUIRED"
+            type: object
+            description: |
+              Category type to which the financed product belongs.
+            required: false
+            properties:
+              id:
+                (annotations.bindingDefinition):
+                  - method: "GET"
+                    input: "NONE"
+                    output: "REQUIRED"
+                type: string
+                description: |
+                  Identifier of the category type of the product financed. As an example of category types we have end products ready for use, cell phones, tablets, laptops, etc.
+                required: false
+              description:
+                (annotations.bindingDefinition):
+                  - method: "GET"
+                    input: "NONE"
+                    output: "OPTIONAL"
+                type: string
+                description: |
+                  Description of the category type of the product financed.
+                required: false

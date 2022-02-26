@@ -1,0 +1,1 @@
+This API includes any service related to Proposals. A proposal is set of conditions and characteristics related to a product that the bank wants to sell to a person. The proposal cannot be related to a formal contract.

@@ -1,0 +1,39 @@
+{
+  "data": {
+    "product": {
+      "id": "CARD",
+      "subproduct": {
+        "id": "CREDIT_CARD"
+      }
+    },
+    "validationDictum": "DISAPPROVED",
+    "dictumReasons": [
+      {
+        "id": "RULE_INVALIDATE",
+        "description": "Exceeded the limit of attempts"
+      }
+    ],
+    "participant": {
+      "id": "23679021",
+      "identityDocument": {
+        "documentType": {
+          "id": "DNI"
+        }
+      },
+      "contacts": [
+        {
+          "contactDetailType": "MOBILE",
+          "number": "205 123 1354",
+          "phoneCompany": {
+            "id": "003",
+            "name": "Movistar"
+          }
+        },
+        {
+          "contactDetailType": "EMAIL",
+          "address": "pcardenas@gmail.com"
+        }
+      ]
+    }
+  }
+}

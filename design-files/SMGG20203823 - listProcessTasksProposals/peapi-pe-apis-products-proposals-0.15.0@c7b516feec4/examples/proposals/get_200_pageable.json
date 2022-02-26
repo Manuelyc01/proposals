@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": "100",
+      "term": {
+        "frequency": "MONTHLY",
+        "value": 24
+      },
+      "product": {
+        "productClassification": {
+          "id": "CREDIT_CARD"
+        }
+      },
+      "grantedAmount": {
+          "value": 5409.00,
+          "currency": "PEN"
+      },
+      "installmentPayment": {
+        "amount": 347,
+        "currency": "PEN"
+      },
+      "interestAnnualRate": 13.9
+    }
+  ],
+  "pagination": {
+    "links": {
+      "first": "https://www.bbvaapis.com/proposals/v0?participant.identityDocument.documentType.id=DNI&participant.identityDocument.documentNumber=12345678",
+      "last": "https://www.bbvaapis.com/proposals/v0?participant.identityDocument.documentType.id=DNI&participant.identityDocument.documentNumber=12345678",
+      "previous": "https://www.bbvaapis.com/proposals/v0?participant.identityDocument.documentType.id=DNI&participant.identityDocument.documentNumber=12345678",
+      "next": "https://www.bbvaapis.com/proposals/v0?participant.identityDocument.documentType.id=DNI&participant.identityDocument.documentNumber=12345678"
+    },
+    "page": 1,
+    "totalPages": 6,
+    "totalElements": 6,
+    "pageSize": 1
+  }
+}

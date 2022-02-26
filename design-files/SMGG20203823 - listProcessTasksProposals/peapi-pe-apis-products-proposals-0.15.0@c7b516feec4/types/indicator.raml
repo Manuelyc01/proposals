@@ -1,0 +1,36 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  indicator:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        required: false
+        enum: [ADDRESS_VALIDATION, WORKPLACE_VALIDATION]
+        (annotations.enumDescription):
+          - ADDRESS_VALIDATION: Indicates if the proposal exonerates to validate the address of the person.
+          - WORKPLACE_VALIDATION: The proposal not requires to validate the workplace of the person.
+        description: |
+          Identifier associated to the behavior indicator.
+      isActive:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: boolean
+        description: |
+          Indicates whether the indicator is enabled.
+        required: false

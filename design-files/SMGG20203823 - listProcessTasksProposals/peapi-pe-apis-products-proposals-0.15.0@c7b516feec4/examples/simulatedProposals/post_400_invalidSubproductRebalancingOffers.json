@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "invalidSubproductRebalancingOffers",
+      "message": "El código del subproducto es inválido para el rebalanceo de ofertas.",
+      "type": "ERROR"
+    }
+  ]
+}

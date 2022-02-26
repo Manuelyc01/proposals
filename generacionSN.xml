@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<assembly>
+    <id>sn</id>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>target/classes/com/bbva/pzic/proposals/v0/processtasks/business</directory>
+            <outputDirectory>com/bbva/pzic/proposals/v0/processtasks/business</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>target/classes/com/bbva/pzic/proposals/v0/processtasks/dao</directory>
+            <outputDirectory>com/bbva/pzic/proposals/v0/processtasks/dao</outputDirectory>
+            <excludes>
+                <exclude>
+                    **/mock/**
+                </exclude>
+            </excludes>
+        </fileSet>
+        <fileSet>
+            <directory>target/classes/com/bbva/pzic/proposals/v0/processtasks/util</directory>
+            <outputDirectory>com/bbva/pzic/proposals/v0/processtasks/util</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>target/classes/META-INF</directory>
+            <outputDirectory>META-INF</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>

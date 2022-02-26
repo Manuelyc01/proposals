@@ -1,0 +1,28 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  
+  relatedProductType: relatedProductType.raml
+
+types:
+  relatedProduct:
+    type: object
+    properties:
+      percentage:
+        (annotations.bindingDefinition):
+          - method : "GET"
+            input : "NONE"
+            output : "REQUIRED"
+        type: number
+        description: |
+          Related product rate.
+        required: false
+      relatedProductType:
+        (annotations.bindingDefinition):
+          - method : "GET"
+            input : "NONE"
+            output : "REQUIRED"
+        type: relatedProductType.relatedProductType
+        description: |
+          Related product type.
+        required: false

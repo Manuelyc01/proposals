@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "invalidCustomerData",
+      "message": "Error procesando los datos del cliente, datos inválidos.",
+      "type": "ERROR"
+    }
+  ]
+}

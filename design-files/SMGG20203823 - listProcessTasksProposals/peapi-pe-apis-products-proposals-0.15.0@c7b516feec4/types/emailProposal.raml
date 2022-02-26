@@ -1,0 +1,24 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  baseContact: baseContactProposal.raml
+
+types:
+  email:
+    type: baseContact.baseContact
+    discriminatorValue: EMAIL
+    description: Email contact type
+    properties:
+      address:
+        (annotations.supportedIn):
+          - country: PE
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Customer email address. This value will be masked when basic
+          authentication state. If the authentication state is advanced the
+          value will be clear.
+        required: false

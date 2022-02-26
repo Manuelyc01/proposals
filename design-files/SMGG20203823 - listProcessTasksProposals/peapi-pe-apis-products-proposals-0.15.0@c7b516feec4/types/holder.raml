@@ -1,0 +1,49 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+  identityDocument: identityDocument.raml
+
+types:
+  holder:
+    type: object
+    properties:
+      name:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Holder name.
+        required: false
+      lastName:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Holder last name.
+        required: false
+      motherLastName:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Holder mother last name.
+        required: false
+      identityDocuments:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: identityDocument.identityDocument[]
+        description: |
+          Holder identity document.
+        required: false
