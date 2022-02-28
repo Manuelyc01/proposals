@@ -1,5 +1,7 @@
 package com.bbva.pzic.proposals.v0.processtasks.facade.dto;
 
+import com.bbva.pzic.proposals.v0.processtasks.dao.model.ppcutge1_1.Status;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -17,7 +19,7 @@ public class ProcessTasks implements Serializable {
     private static final long serialVersionUID = 1L;
     private String businessProcessId;
     private String taskId;
-    private String status;
+    private Status status;
 
     public String getBusinessProcessId() {
         return businessProcessId;
@@ -35,11 +37,11 @@ public class ProcessTasks implements Serializable {
         this.taskId = taskId;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }

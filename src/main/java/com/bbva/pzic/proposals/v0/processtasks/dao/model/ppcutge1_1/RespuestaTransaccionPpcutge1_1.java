@@ -51,13 +51,13 @@ public class RespuestaTransaccionPpcutge1_1 {
 	/**
 	 * <p>Campo <code>campo_1_businessProcessId</code>, &iacute;ndice: <code>1</code>, tipo: <code>ALFANUMERICO</code>
 	 */
-	@Campo(indice = 1, nombre = "campo_1_businessProcessId", tipo = TipoCampo.ALFANUMERICO, longitudMaxima = 40, signo = true, obligatorio = true)
+	@Campo(indice = 1, nombre = "businessProcessId", tipo = TipoCampo.ALFANUMERICO, longitudMaxima = 40, signo = true, obligatorio = true)
 	private String campo_1_businessprocessid;
 	
 	/**
 	 * <p>Campo <code>campo_2_taskId</code>, &iacute;ndice: <code>2</code>, tipo: <code>ALFANUMERICO</code>
 	 */
-	@Campo(indice = 2, nombre = "campo_2_taskId", tipo = TipoCampo.ALFANUMERICO, longitudMaxima = 10, signo = true, obligatorio = true)
+	@Campo(indice = 2, nombre = "taskId", tipo = TipoCampo.ALFANUMERICO, longitudMaxima = 10, signo = true, obligatorio = true)
 	private String campo_2_taskid;
 	
 	/**
