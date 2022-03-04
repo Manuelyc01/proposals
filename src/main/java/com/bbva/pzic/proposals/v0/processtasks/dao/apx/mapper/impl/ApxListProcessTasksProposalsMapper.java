@@ -6,7 +6,6 @@ import com.bbva.pzic.proposals.v0.processtasks.dao.model.ppcutge1_1.PeticionTran
 import com.bbva.pzic.proposals.v0.processtasks.dao.model.ppcutge1_1.RespuestaTransaccionPpcutge1_1;
 import com.bbva.pzic.proposals.v0.processtasks.dao.model.ppcutge1_1.Status;
 import com.bbva.pzic.proposals.v0.processtasks.facade.dto.ProcessTasks;
-import com.bbva.pzic.proposals.v0.processtasks.facade.mapper.impl.ListProcessTasksProposalsMapper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
@@ -40,7 +39,7 @@ public class ApxListProcessTasksProposalsMapper implements IApxIProcessTasksProp
         dtoOut.setTaskId(respuesta.getCampo_2_taskid());
         dtoOut.setStatus(mapOutStatus(respuesta.getStatus()));
 
-        return null;
+        return dtoOut;
     }
 
     private Status mapOutStatus(final com.bbva.pzic.proposals.v0.processtasks.dao.model.ppcutge1_1.Status status) {

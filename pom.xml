@@ -10,12 +10,12 @@
     </parent>
 
 
-    <groupId>com.bbva.pzic.proposals.v0.processtasks</groupId>
-    <artifactId>pzic_proposals_v0_processtasks</artifactId>
+    <groupId>com.bbva.pzic.servicio.test.tasksproposals</groupId>
+    <artifactId>pzic_servicio_test_tasksproposals</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>pzic_proposals_v0_processtasks</name>
+    <name>pzic_servicio_test_tasksproposals</name>
 
     <repositories/>
     <pluginRepositories/>
@@ -355,6 +355,11 @@
             <artifactId>javax.el</artifactId>
             <version>${javax.el.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.bbva.jee.arq.spring.core</groupId>
+            <artifactId>arq-spring-backend-commons</artifactId>
+            <version>5.2.2.2</version>
         </dependency>
         <!-- FIN hibernate -->
 

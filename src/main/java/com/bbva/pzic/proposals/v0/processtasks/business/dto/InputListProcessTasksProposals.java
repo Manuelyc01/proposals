@@ -14,6 +14,15 @@ public class InputListProcessTasksProposals {
     @Valid
     @NotNull(groups = ValidationGroup.ListProcessTasksProposals.class)
     private DTOIntStatus status;
+
+    public DTOIntStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(DTOIntStatus status) {
+        this.status = status;
+    }
+
     public String getBusinessProcessId() {
         return businessProcessId;
     }

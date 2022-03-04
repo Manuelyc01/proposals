@@ -11,8 +11,8 @@ import java.io.Serializable;
 /**
  * @author Entelgy
  */
-@XmlRootElement(name = "processTasks", namespace = "urn:com:bbva:pzic:proposals:v0:processtasks:dto")
-@XmlType(name = "processTasks", namespace = "urn:com:bbva:pzic:proposals:v0:processtasks:dto")
+@XmlRootElement(name = "processTasks", namespace = "urn:com:bbva:pzic:proposals:v0:processtasks:facade:dto")
+@XmlType(name = "processTasks", namespace = "urn:com:bbva:pzic:proposals:v0:processtasks:facade:dto")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProcessTasks implements Serializable {
 

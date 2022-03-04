@@ -14,14 +14,17 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import com.bbva.jee.arq.spring.core.host.ExcepcionTransaccion;
 import com.bbva.jee.arq.spring.core.host.protocolo.ExcepcionRespuestaHost;
 import com.bbva.jee.arq.spring.core.host.transporte.ExcepcionTransporte;
+/*
 import com.bbva.jee.arq.spring.core.servicing.test.BusinessServiceTestContextLoader;
 import com.bbva.jee.arq.spring.core.servicing.test.MockInvocationContextTestExecutionListener;
+*/
 
 /**
  * Test de la transacci&oacute;n <code>PPCUTGE1</code>
  * 
  * @author Arquitectura Spring BBVA
  */
+/*
 @Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
@@ -33,8 +36,9 @@ import com.bbva.jee.arq.spring.core.servicing.test.MockInvocationContextTestExec
     }
 )
 @TestExecutionListeners(listeners = { MockInvocationContextTestExecutionListener.class, DependencyInjectionTestExecutionListener.class })
+*/
 public class TestTransaccionPpcutge1_1 {
-	
+	/*
 	private static final Log LOG = LogFactory.getLog(TestTransaccionPpcutge1_1.class);
 		
 	@Autowired
@@ -45,9 +49,9 @@ public class TestTransaccionPpcutge1_1 {
 		
 		PeticionTransaccionPpcutge1_1 peticion = new PeticionTransaccionPpcutge1_1();		
 		
-		/*
+		*//*
 		 * TODO: poblar la peticion con valores adecuados
-		 */
+		 *//*
 		
 		try {
 			LOG.info("Invocando transaccion, peticion: " + peticion);
@@ -58,5 +62,5 @@ public class TestTransaccionPpcutge1_1 {
 		} catch ( ExcepcionTransporte e ) {
 			LOG.error("Error de transporte", e);
 		}
-	}
+	}*/
 }
