@@ -1,0 +1,32 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  installmentPayment:
+    type: object
+    properties:
+      amount:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: number
+        description: |
+          Installment monetary amount.
+        required: false
+      currency:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          String based on ISO-4217 for specifying the currency for the installment amount.
+        required: false

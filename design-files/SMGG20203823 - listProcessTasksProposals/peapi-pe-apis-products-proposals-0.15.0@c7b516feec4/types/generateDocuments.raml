@@ -1,0 +1,17 @@
+#%RAML 1.0 Library
+uses:
+  annotations:  ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+      
+types:
+  generateDocuments:
+    type: object
+    properties:
+      proposalId:
+        (annotations.bindingDefinition):
+          - method: POST
+            input: REQUIRED
+            output: NONE
+        type: string
+        description: |
+          Identifier of the contract process associated with the customer. It is informed by the application that initializes the process.
+        required: false    

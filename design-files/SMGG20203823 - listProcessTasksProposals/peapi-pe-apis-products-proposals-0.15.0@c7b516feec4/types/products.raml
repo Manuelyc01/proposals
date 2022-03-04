@@ -1,0 +1,23 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+  productClassification: productClassification.raml
+
+types:
+  products:
+    type: array
+    items:
+      properties:
+        productClassification:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "REQUIRED"
+              output: "NONE"
+            - method: "GET"
+              input: "NONE"
+              output: "OPTIONAL"
+          type: productClassification.productClassification
+          description: |
+            Product Classification.
+          required: false

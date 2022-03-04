@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "tokenNotExist",
+      "message": "Token does not exist",
+      "type": "ERROR"
+    }
+  ]
+}

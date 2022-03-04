@@ -1,0 +1,73 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+  productClassification: productClassification.raml
+  productConfiguration: productConfiguration.raml
+  title: title.raml
+  productType: productType.raml
+
+types:
+  product:
+    type: object
+    properties:
+      bin:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          The bank identification number associated to the product, it\'s a general identifier that is used by different bank departments. It only applies to CARDS.
+        required: false
+      title:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+        type: title.title
+        required: false
+        description: |
+          Title of the product.
+      riskGroup:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "OPTIONAL"
+        type: string
+        enum: [LOW_RISK, MEDIUM_RISK, HIGH_RISK, RISK_FREE]
+        (annotations.enumDescription):
+          - LOW_RISK: Low risk.
+          - MEDIUM_RISK: Medium risk.
+          - HIGH_RISK: High risk.
+          - RISK_FREE: Having no risk involved.
+        description: |
+          Risk group that is used to evaluate how the product will be proposed.
+        required: false
+      productType:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+        type: productType.productType
+        description: |
+          Product type.
+        required: false
+      productClassification:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+        type: productClassification.productClassification
+        description: |
+          Product Classification.
+        required: false
+      productConfiguration:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+        type: productConfiguration.productConfiguration
+        description: |
+          Product Configuration. This configuration indicates what segments are available for the current product. The segments are used to assign an interest rate for the proposal.
+        required: false

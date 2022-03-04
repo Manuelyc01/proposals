@@ -1,0 +1,40 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+  deliveryType: deliveryType.raml
+
+types:
+  delivery:
+    type: object
+    properties:
+      deliveryType:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "PATCH"
+            input: "OPTIONAL"
+            output: "NONE"
+        type: deliveryType.deliveryType
+        description: |
+          Type of delivery of documentation.
+        required: false
+      email:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+          - method: "PATCH"
+            input: "OPTIONAL"
+            output: "NONE"
+        type: string
+        description: |
+          Email where the documentation is delivered.
+        required: false

@@ -1,0 +1,27 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  documentTypeHiring: documentTypeHiring.raml
+
+types:
+  identityDocumentHiring:
+    type: object
+    properties:
+      documentType:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: documentTypeHiring.documentTypeHiring
+        description: |
+          Identity document type.
+        required: false
+      documentNumber:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: string
+        description: |
+          Identity document number.
+        required: false

@@ -1,0 +1,180 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+  tariff: tariff.raml
+  relatedProduct: relatedProduct.raml
+  delivery: delivery.raml
+  externalProduct: externalProduct.raml
+  holder: holder.raml
+  operation: operation.raml
+  branch: branch.raml
+  status: status.raml
+
+types:
+  externalFinancingProposals:
+    type: array
+    items:
+      properties:
+        id:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: string
+          description: |
+            Identifier of the external financing proposal.
+          required: false
+        requestDate:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: date-only
+          description: |
+            Request date of the external financing proposal.
+          required: false
+        disbursementDate:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: date-only
+          description: |
+            Date of disbursement of the amount to the external company to finance the product.
+          required: false
+        currency:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: string
+          description: |
+            String based on ISO-4217 for specifying the currency related to the external financing proposal.
+          required: false
+        initialFee:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: object
+          description: |
+            Initial fee of the external financing proposal.
+          properties:
+            amount:
+              (annotations.bindingDefinition):
+                - method: "GET"
+                  input: "NONE"
+                  output: "REQUIRED"
+              type: number
+              description: |
+                Initial fee amount.
+              required: false
+            currency:
+              (annotations.bindingDefinition):
+                - method: "GET"
+                  input: "NONE"
+                  output: "REQUIRED"
+              type: string
+              description: |
+                String based on ISO-4217 for specifying the currency related to the initial fee amount.
+              required: false
+        initialAmount:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          description: |
+            Initial amount financed.
+          type: object
+          properties:
+            amount:
+              (annotations.bindingDefinition):
+                - method: "GET"
+                  input: "NONE"
+                  output: "REQUIRED"
+              type: number
+              description: |
+                Initial monetary amount financed.
+              required: false
+            currency:
+              (annotations.bindingDefinition):
+                - method: "GET"
+                  input: "NONE"
+                  output: "REQUIRED"
+              type: string
+              description: |
+                String based on ISO-4217 for specifying the currency related to the initial amount financed.
+              required: false
+        tariff:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: tariff.tariff
+          description: |
+            Applied tariff to the external financing proposal.
+          required: false
+        relatedProduct:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: relatedProduct.relatedProduct
+          description: |
+            Product related to the external financing proposal.
+          required: false
+        externalProduct:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: externalProduct.externalProduct
+          description: |
+            Financed external product.
+          required: false
+        holder:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: holder.holder
+          description: |
+            Holder related with the external financing proposal.
+          required: false
+        operation:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: operation.operation
+          description: |
+            Operation related to the external financing proposal.
+          required: false
+        delivery:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: delivery.delivery
+          description: |
+            Documentation delivery type related to the external financing proposal.
+          required: false
+        branch:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "OPTIONAL"
+          type: branch.branch
+          description: |
+            Office of the bank associated to the external financing proposal.
+          required: false
+        status:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: status.status
+          description: |
+            Status of the external financing proposal.
+          required: false

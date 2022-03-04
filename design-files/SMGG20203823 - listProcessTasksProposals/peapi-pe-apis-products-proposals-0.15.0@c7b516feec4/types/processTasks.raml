@@ -1,0 +1,63 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  processTasks:
+    type: array
+    items:
+      properties:
+        businessProcessId:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: string
+          required: false
+          description: |
+            Business process identifier that serves as a link between business data and the process which belongs to. Is informed at process creation time and is the same for all the tasks inside the process.
+        taskId:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: string
+          required: false
+          description: |
+            The Task Identifier.
+        status:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          required: false
+          type: object
+          description: |
+            Information about the status of the task.
+          properties:
+            id:
+              (annotations.bindingDefinition):
+                - method: "GET"
+                  input: "NONE"
+                  output: "REQUIRED"
+              type: string
+              enum: ["ACTIVE", "RESERVED", "INPROGRESS", "SUSPENDED", "COMPLETED", "COMPLETED_ERROR"]
+              (annotations.enumDescription):
+                - ACTIVE: Indicates that the task is active.
+                - RESERVED: Indicates that the task is reserved by a user.
+                - INPROGRESS: Indicates that the task is currently being performed.
+                - SUSPENDED: Indicates that the task has been suspended until it's activation date or when someone resumes it.
+                - COMPLETED: Indicates that the task has been completed
+                - COMPLETED_ERROR: Indicates that the task has been completed but with error.
+              description: |
+                Status of the task
+              required: false
+            description:
+              (annotations.bindingDefinition):
+                - method: "GET"
+                  input: "NONE"
+                  output: "REQUIRED"
+              type: string
+              description: |
+                Description of the status.
+              required: false

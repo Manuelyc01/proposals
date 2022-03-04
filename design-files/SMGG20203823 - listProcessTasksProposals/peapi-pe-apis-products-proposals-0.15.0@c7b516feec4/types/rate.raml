@@ -1,0 +1,31 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  rate:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        enum: [PROPOSED, MAXIMUM, MINIMUM]
+        (annotations.enumDescription):
+          - PROPOSED: Proposed interest rate.
+          - MAXIMUM: Maximum interest rate.
+          - MINIMUM: Minimum interest rate.
+        description: |
+          Rate type identifier.
+        required: false
+      value:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: number
+        description: |
+          Interest rate value.
+        required: false

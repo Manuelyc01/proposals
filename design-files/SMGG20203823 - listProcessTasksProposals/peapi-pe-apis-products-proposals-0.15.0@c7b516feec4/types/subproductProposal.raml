@@ -1,0 +1,17 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  
+types:
+  subproductProposal:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Subproduct identifier. Flow to be followed according to the type of subproduct that is being requested (agreements, refinanced, among others).
+        required: false      

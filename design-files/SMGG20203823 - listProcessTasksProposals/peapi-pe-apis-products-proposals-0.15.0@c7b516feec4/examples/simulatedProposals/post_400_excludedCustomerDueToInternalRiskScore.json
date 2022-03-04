@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "excludedCustomerDueToInternalRiskScore",
+      "message": "El cliente ha sido excluído de la base por la clasificación BBVA.",
+      "type": "ERROR"
+    }
+  ]
+}

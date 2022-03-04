@@ -1,0 +1,101 @@
+{
+  "data": [
+    {
+      "participant": {
+        "id": "A23334"
+      },
+      "products": [
+        {
+          "productClassification": {
+            "id": "RENOVATED_CONSUMER_LOAN"
+          }
+        }
+      ],
+      "internalCode": "C4",
+      "procurementFlow": {
+        "procurementFlowType": {
+          "id": "FAST",
+          "name": "FLUJO FAST"
+        }
+      },
+      "indicators": [
+        {
+          "id": "ADDRESS_VALIDATION",
+          "isActive": false
+        },
+        {
+          "id": "WORKPLACE_VALIDATION",
+          "isActive": false
+        }
+      ],
+      "campaign": {
+        "code": "201710"
+      },
+      "term": {
+        "frequency": "MONTHLY",
+        "value": 36
+      },
+      "product": {
+        "title": {
+          "id": "F7",
+          "name": "Visa Continental Zero"
+        },
+        "riskGroup": "LOW_RISK",
+        "productType": {
+          "id": "CARDS"
+        },
+        "productClassification": {
+          "id": "CREDIT_CARD"
+        }
+      },
+      "interestRates": [
+        {
+          "interestRateType": "PROPOSED",
+          "value": 10.0
+        },
+        {
+          "interestRateType": "MAXIMUM",
+          "value": 11.0
+        }
+      ],
+      "ranges": [
+        {
+          "id": "MAXIMUM",
+          "value": 12.0
+        }
+      ],
+      "installments": [
+        {
+          "installmentType": "CONTRACT",
+          "principal": {
+            "amount": 100.0,
+            "currency": "PEN"
+          }
+        }
+      ],
+      "grantedAmounts": [
+        {
+          "grantedAmountType":{
+            "id": "ADJUSTED"
+          },
+          "value": 23543.00,
+          "currency": "PEN"
+        },
+        {
+          "grantedAmountType":{
+            "id": "CONTRACTED"
+          },
+          "value": 23540.00,
+          "currency": "PEN"
+        },
+        {
+          "grantedAmountType":{
+            "id": "REAL"
+          },
+          "value": 23543.08,
+          "currency": "PEN"
+        }
+      ]
+    }
+  ]
+}

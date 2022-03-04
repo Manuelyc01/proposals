@@ -1,0 +1,91 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+  procurementFlow: procurementFlow.raml
+  indicator: indicator.raml
+  campaign: campaign.raml
+  rate: rate.raml
+  grantedAmount: grantedAmount.raml
+  installmentPayment: installmentPayment.raml
+  term: term.raml
+
+types:
+  proposals:
+    type: array
+    items:
+      properties:
+        id:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: string
+          description: |
+            Proposal identifier.
+          required: false
+        term:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: term.term
+          description: |
+            Term of the product related to the proposal.
+          required: false
+        product:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: object
+          properties:
+            productClassification:
+              (annotations.bindingDefinition):
+                - method: "GET"
+                  input: "NONE"
+                  output: "REQUIRED"
+              type: object
+              properties:
+                id:
+                  (annotations.bindingDefinition):
+                    - method: "GET"
+                      input: "NONE"
+                      output: "REQUIRED"
+                  type: string
+                  description: |
+                    Financial product classification identifier.
+                  required: false
+              description: |
+                Financial product classification.
+              required: false
+          description: |
+            Product related to the proposal.
+          required: false
+        grantedAmount:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: grantedAmount.grantedAmount
+          description: |
+            Is the amount granted by the bank to the proposal’s owner. This amount is calculated based on a financial analysis of the person made by the bank.
+          required: false
+        installmentPayment:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: installmentPayment.installmentPayment
+          description: |
+            Approximated installment payment that the person would pay, in a certain period of time, in case accepts the proposal.
+          required: false
+        interestAnnualRate:
+          (annotations.bindingDefinition):
+            - method: "GET"
+              input: "NONE"
+              output: "REQUIRED"
+          type: number
+          description: |
+            Interest annual rate of the proposal.
+          required: false

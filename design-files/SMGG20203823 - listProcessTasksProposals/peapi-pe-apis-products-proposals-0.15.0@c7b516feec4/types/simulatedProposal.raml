@@ -1,0 +1,132 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  participant: participant.raml
+  products: products.raml
+  term: term.raml
+  grantedAmount: grantedAmount.raml
+  installmentPayment: installmentPayment.raml
+  procurementFlow: procurementFlow.raml
+  indicator: indicator.raml
+  campaign: campaign.raml
+  product: product.raml
+  interestRates: interestRates.raml
+  range: range.raml
+  installment: installment.raml
+
+types:
+  simulatedProposal:
+    type: object
+    properties:
+      participant:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: participant.participant
+        description: |
+          Is the owner of the proposal.
+        required: false
+      products:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "NONE"
+        type: products.products
+        description: |
+          Product associated to the proposal.
+        required: false
+      proposal:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "NONE"
+        type: object
+        properties:
+          term:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "REQUIRED"
+                output: "NONE"
+            type: term.term
+            description: |
+              Term of the product related to the proposal.
+            required: false
+          product:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "REQUIRED"
+                output: "NONE"
+            type: object
+            properties:
+              productClassification:
+                (annotations.bindingDefinition):
+                  - method: "POST"
+                    input: "REQUIRED"
+                    output: "NONE"
+                type: object
+                properties:
+                  id:
+                    (annotations.bindingDefinition):
+                      - method: "POST"
+                        input: "REQUIRED"
+                        output: "NONE"
+                    type: string
+                    description: |
+                      Financial product classification identifier.
+                    required: false
+                description: |
+                  Financial product classification.
+                required: false
+              title:
+                (annotations.bindingDefinition):
+                  - method: "POST"
+                    input: "REQUIRED"
+                    output: "NONE"
+                type: object
+                properties:
+                  id:
+                    (annotations.bindingDefinition):
+                      - method: "POST"
+                        input: "REQUIRED"
+                        output: "NONE"
+                    type: string
+                    description: |
+                      Title product identifier.
+                    required: false
+                description: |
+                  Title product.
+                required: false
+            description: |
+              Product related to the proposal.
+            required: false
+          grantedAmount:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "REQUIRED"
+                output: "NONE"
+            type: grantedAmount.grantedAmount
+            description: |
+              Is the amount granted by the bank to the proposal\'s owner. This amount is calculated based on a financial analysis of the person made by the bank. This attribute is required in case installmentPayment is not used.
+            required: false
+          installmentPayment:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "REQUIRED"
+                output: "NONE"
+            type: installmentPayment.installmentPayment
+            description: |
+              Is the amount granted by the bank to the proposal\'s owner. This amount is calculated based on a financial analysis of the person made by the bank. This attribute is required in case grantedAmount is not used.
+            required: false
+          interestRate:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "REQUIRED"
+                output: "NONE"
+            type: number
+            description: |
+              Interest rate related to the product. This must be the ADJUSTED interest rate.
+            required: false
+        description: |
+          Simulated proposal that was selected by the user before execute the current simulation.
+        required: false

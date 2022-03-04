@@ -1,0 +1,29 @@
+{
+  "product": {
+    "id": "CARD",
+    "subproduct": {
+      "id": "CREDIT_CARD"
+    }
+  },
+  "participant": {
+    "id": "23679021",
+    "identityDocument": {
+      "documentType": {
+        "id": "DNI"
+      }
+    },
+    "contacts": [
+      {
+        "contactDetailType": "MOBILE",
+        "number": "205 123 1354",
+        "phoneCompany": {
+          "id": "003"
+        }
+      },
+      {
+        "contactDetailType": "EMAIL",
+        "address": "pcardenas@gmail.com"
+      }
+    ]
+  }
+}

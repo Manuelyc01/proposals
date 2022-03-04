@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "excludedCustomerDueToBeingInactive",
+      "message": "El cliente ha sido excluído de la base ya que se encuentra inactivo.",
+      "type": "ERROR"
+    }
+  ]
+}

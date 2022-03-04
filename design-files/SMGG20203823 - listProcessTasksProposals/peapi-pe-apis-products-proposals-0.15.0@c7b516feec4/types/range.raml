@@ -1,0 +1,36 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  range:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        enum: [MAXIMUM, MINIMUM]
+        (annotations.enumDescription):
+          - MAXIMUM: Maximum amount that can be offered for the proposal.
+          - MINIMUM: Minimum amount that can be offered for the proposal.
+        description: |
+          Range identifier.
+        required: false
+      value:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: number
+        description: |
+          Range value.
+        required: false

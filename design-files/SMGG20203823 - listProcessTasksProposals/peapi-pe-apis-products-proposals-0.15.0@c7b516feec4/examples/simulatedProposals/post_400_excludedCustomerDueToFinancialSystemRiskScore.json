@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "excludedCustomerDueToFinancialSystemRiskScore",
+      "message": "El cliente ha sido excluído de la base por la Clasificación en el Sistema Financiero.",
+      "type": "ERROR"
+    }
+  ]
+}

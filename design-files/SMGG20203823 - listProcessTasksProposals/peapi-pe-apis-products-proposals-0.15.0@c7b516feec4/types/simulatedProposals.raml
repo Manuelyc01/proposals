@@ -1,0 +1,129 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  participant: participant.raml
+  products: products.raml
+  term: term.raml
+  grantedAmount: grantedAmount.raml
+  installmentPayment: installmentPayment.raml
+  procurementFlow: procurementFlow.raml
+  indicator: indicator.raml
+  campaign: campaign.raml
+  product: product.raml
+  interestRates: interestRates.raml
+  range: range.raml
+  installment: installment.raml
+
+types:
+  simulatedProposals:
+    type: array
+    items:
+      properties:
+        participant:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "NONE"
+              output: "OPTIONAL"
+          type: participant.participant
+          description: |
+            Is the owner of the proposal.
+          required: false
+        products:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "NONE"
+              output: "NONE"
+          type: products.products
+          description: |
+            Product associated to the proposal.
+          required: false
+        internalCode:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "NONE"
+              output: "REQUIRED"
+          type: string
+          description: |
+            Proposal internal code. Code to identify the internal sub-product type associated to the proposal.
+          required: false
+        procurementFlow:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "NONE"
+              output: "REQUIRED"
+          type: procurementFlow.procurementFlow
+          description: |
+            Procurement flow. The natural flow of the proposal is to end in a contracted product for the person, this natural flow, also called procurement flow, has some particularities which make that we have more than flow to hire a product.
+          required: false
+        indicators:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "NONE"
+              output: "REQUIRED"
+          type: indicator.indicator[]
+          description: |
+            Indicators related to the Proposal. These indicators serve to know if is necessary to validate some information of the proposal\'s owner.
+          required: false
+        campaign:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "NONE"
+              output: "REQUIRED"
+          type: campaign.campaign
+          description: |
+            Campaign of the proposal.
+          required: false
+        term:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "NONE"
+              output: "REQUIRED"
+          type: term.term
+          description: |
+            Term of the product related to the proposal.
+          required: false
+        product:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "NONE"
+              output: "REQUIRED"
+          type: product.product
+          description: |
+            Product related to the proposal.
+          required: false
+        interestRates:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "NONE"
+              output: "REQUIRED"
+          type: interestRates.interestRates
+          description: |
+            List of interest rates related to the proposal.
+          required: false
+        ranges:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "NONE"
+              output: "REQUIRED"
+          type: range.range[]
+          description: |
+            List of ranges of offered amounts for the proposal.
+          required: false
+        installments:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "NONE"
+              output: "REQUIRED"
+          type: installment.installment[]
+          description: |
+            List of the calculated installment amounts.
+          required: false
+        grantedAmounts:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "NONE"
+              output: "REQUIRED"
+          type: grantedAmount.grantedAmount[]
+          description: |
+            List of of the granted amounts that belong to the proposal.
+          required: false

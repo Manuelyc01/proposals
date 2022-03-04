@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "excludedCustomerDueToOverIndebtedness",
+      "message": "El cliente ha sido excluído de la basepor el nivel de sobreendeudamiento que posee.",
+      "type": "ERROR"
+    }
+  ]
+}

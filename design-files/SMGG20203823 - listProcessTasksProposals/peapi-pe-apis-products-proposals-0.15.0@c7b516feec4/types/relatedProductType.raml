@@ -1,0 +1,26 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  relatedProductType:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method : "GET"
+            input : "NONE"
+            output : "REQUIRED"
+        type: string
+        description: |
+          Related product type identifier.
+        required: false
+      name:
+        (annotations.bindingDefinition):
+          - method : "GET"
+            input : "NONE"
+            output : "REQUIRED"
+        type: string
+        description: |
+          Related product type description.
+        required: false

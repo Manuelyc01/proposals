@@ -1,0 +1,62 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  installment:
+    type: object
+    properties:
+      installmentType:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        enum: [ADJUSTED, CONTRACT, REAL]
+        (annotations.enumDescription):
+          - ADJUSTED: It's the rounded real installment amount.
+          - CONTRACT: It's the installment amount  that is selected by the person.
+          - REAL: It's the original calculated installment  amount without modifications.
+        description: |
+          Instalment type.
+        required: false
+      principal:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: object
+        description: |
+          Current instalment monetary amount.
+        required: false
+        properties:
+          amount:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "NONE"
+                output: "REQUIRED"
+              - method: "GET"
+                input: "NONE"
+                output: "REQUIRED"
+            type: number
+            description: |
+              Principal monetary amount.
+            required: false
+          currency:
+            (annotations.bindingDefinition):
+              - method: "POST"
+                input: "NONE"
+                output: "REQUIRED"
+              - method: "GET"
+                input: "NONE"
+                output: "OPTIONAL"
+            type: string
+            description: |
+              String based on ISO-4217 for specifying the currency related to the principal monetary amount.
+            required: false

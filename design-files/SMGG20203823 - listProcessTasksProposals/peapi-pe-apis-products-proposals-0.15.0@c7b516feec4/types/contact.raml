@@ -1,0 +1,14 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  mobile: mobile.raml
+  email: email.raml
+  
+types:
+  contact:
+    (annotations.bindingDefinition):
+      - method: "POST"
+        input: "OPTIONAL"
+        output: "OPTIONAL"
+    type: mobile.mobile | email.email
+    required: false

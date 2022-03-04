@@ -1,0 +1,22 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  baseContact:
+    type: object
+    discriminator: contactDetailType
+    properties:
+      contactDetailType:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        enum: [EMAIL, MOBILE]
+        (annotations.enumDescription):
+          - EMAIL: Email contact. 
+          - MOBILE: Mobile phone contact.
+        description: |
+          Contact information type.
+        required: false

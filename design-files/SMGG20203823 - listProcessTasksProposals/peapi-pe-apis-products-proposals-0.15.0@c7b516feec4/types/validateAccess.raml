@@ -1,0 +1,51 @@
+#%RAML 1.0 Library
+uses:
+  annotations:  ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  participantProposal: participantProposal.raml
+  productProposal: productProposal.raml
+  dictumReasons: dictumReasons.raml
+    
+types:
+  validateAccess:
+    type: object
+    properties:
+      participant:
+        (annotations.bindingDefinition):
+          - method: POST
+            input: REQUIRED
+            output: REQUIRED
+        type: participantProposal.participantProposal
+        description: |
+          Data of the participant that will be evaluated.
+        required: false
+      product:
+        (annotations.bindingDefinition):
+          - method: POST
+            input: OPTIONAL
+            output: OPTIONAL
+        type: productProposal.productProposal
+        description: |
+          Commercial product identification.
+        required: false
+      validationDictum:
+        (annotations.bindingDefinition):
+          - method: POST
+            input: NONE
+            output: REQUIRED
+        type: string
+        enum: [APPROVED, DISAPPROVED]
+        (annotations.enumDescription):
+          - APPROVED: The person passed the validation.
+          - DISAPPROVED: The person did not pass validation.
+        description: |
+          Dictum of the validation to the applicant.
+        required: false
+      dictumReasons:
+        (annotations.bindingDefinition):
+          - method: POST
+            input: NONE
+            output: OPTIONAL
+        type: dictumReasons.dictumReasons[]
+        description: |
+          Reasons to support the dictum.
+        required: false

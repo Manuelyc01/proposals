@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "excludedCustomerDueToPublicRelevanceCondition",
+      "message": "El cliente ha sido excluído de la base por su condición de relevancia pública.",
+      "type": "ERROR"
+    }
+  ]
+}

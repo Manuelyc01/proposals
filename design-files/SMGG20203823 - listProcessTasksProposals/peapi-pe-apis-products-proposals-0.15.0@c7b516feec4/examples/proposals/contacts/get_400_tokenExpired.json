@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "tokenExpired",
+      "message": "Token expired",
+      "type": "ERROR"
+    }
+  ]
+}
